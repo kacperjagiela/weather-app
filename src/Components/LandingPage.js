@@ -6,30 +6,52 @@ const { Title } = Typography;
 const { Search } = Input;
 
 export default class LandingPage extends React.Component {
+    state = {
+        loadingSearch: false,
+        loadingButton: false,
+    }
+
     onSearch = (val) => {
         const { history } = this.props;
+        this.setState({
+            loadingSearch: true,
+        })
         history.push(`/forecast/${val}`);
     }
 
     currentLocation = () => {
         const { history } = this.props;
+        this.setState({
+            loadingButton: true,
+        })
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(position => {
                 history.push(`/forecast/${position.coords.longitude}/${position.coords.latitude}`);
+            }, err => {
+                if (err) {
+                    message.warning('Could not get your location.');
+                    this.setState({
+                        loadingButton: false,
+                    });
+                }
             });
           } else {
-            message.warning('This browser does not support geolocation');
+            message.warning('This browser does not support geolocation!');
+            this.setState({
+                loadingButton: false,
+            })
           }
     }
 
     render() {
+        const { loadingSearch, loadingButton} = this.state;
         return (
             <div className='landing-page'>
                 <Title level={1}>Get your forecast!</Title>
                 <div className='landing-page-inputs'>
                     <Search
                         placeholder='Input city name...'
-                        enterButton='Get forecast'
+                        enterButton={<Button type='primary' loading={loadingSearch}>Get forecast!</Button>}
                         size='large'
                         onSearch={value => this.onSearch(value)}
                         style={{ marginRight: '10px' }}
@@ -38,8 +60,9 @@ export default class LandingPage extends React.Component {
                         icon='compass'
                         type='primary'
                         size='large'
-                        style={{ marginLeft: '10px'}}
+                        style={{ marginLeft: '30px'}}
                         onClick={() => this.currentLocation()}
+                        loading={loadingButton}
                     >
                         Current location
                     </Button>
