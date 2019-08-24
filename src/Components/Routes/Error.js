@@ -28,13 +28,18 @@ const Error = ({ history }) => {
 			</Typography.Title>
 			<LandingPageInputs>
 				<Input.Search
-					placeholder='Input city name...'
+					placeholder={t('Inputcity')}
 					enterButton={<Button type='primary' loading={loading}>{t('button')}</Button>}
 					size='large'
 					onSearch={(value) => onSearch(value)}
 					style={{ marginRight: '10px' }}
 				/>
 			</LandingPageInputs>
+			<Typography.Text style={{ marginTop: '15px' }}>
+				<Trans>
+					tip
+				</Trans>
+			</Typography.Text>
 		</Landing>
 	);
 };

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Button } from 'antd';
 
 const Temperature = ({ temperature }) => {
 	const [temp, setTemp] = React.useState(temperature);
@@ -15,14 +16,12 @@ const Temperature = ({ temperature }) => {
 	};
 
 	return (
-		<span
-			role='button'
-			tabIndex={0}
+		<Button
 			onKeyPress={() => changeUnit(temp)}
 			onClick={() => changeUnit(temp)}
 			style={{
 				cursor: 'pointer',
-				textDecoration: 'underline',
+				marginTop: '5px',
 			}}
 		>
 			{temp}
@@ -30,7 +29,7 @@ const Temperature = ({ temperature }) => {
 				unit === 'celsius' ? <>&#8451;</>
 					: <>&#8457;</>
 			}
-		</span>
+		</Button>
 	);
 };
 

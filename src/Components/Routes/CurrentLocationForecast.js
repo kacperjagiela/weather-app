@@ -2,24 +2,24 @@
 import * as React from 'react';
 import { Icon } from 'antd';
 import { Trans } from 'react-i18next';
-import { Landing } from '../Style';
+import { Landing, LandingPageInputs, Title } from '../Style';
 import Back from '../Reusable/Back';
-import Temperature from '../Reusable/Temperature';
+import WeatherCard from '../Reusable/WeatherCard';
 
 const CurrentLocationForecast = ({ match, history }) => {
 	const [loading, setLoading] = React.useState(true);
 	const [data, setData] = React.useState('');
-	const [temperature, setTemperature] = React.useState(0);
+	const [listDays, setListDays] = React.useState([]);
 
 	React.useEffect(() => {
 		const fetchData = () => {
 			// https for heroku
-			fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${match.params.latitude}&lon=${match.params.longitude}&units=metric&APPID=27b52f2d96109ac0a634c200d7092254`)
+			fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${match.params.latitude}&lon=${match.params.longitude}&units=metric&APPID=27b52f2d96109ac0a634c200d7092254`)
 				.then(async (res) => {
 					const response = await res.json();
 					setData(response);
+					setListDays(response.list.filter((i) => i.dt_txt.includes('15:00:00')));
 					setLoading(false);
-					setTemperature(response.main.temp.toFixed(1));
 				})
 				.catch(() => {
 					history.push('/error');
@@ -33,16 +33,25 @@ const CurrentLocationForecast = ({ match, history }) => {
 	const Loaded = () => (
 		<Landing>
 			<Back history={history} />
-			<h1>
-				<Trans>Your location</Trans> {data.name} {data.sys.country}
-			</h1>
-			<h1>
-				<Trans>Today will be</Trans> {data.weather[0].main}
-			</h1>
-			<h1>
-				<Trans>Temperature for your location</Trans>{' '}
-				<Temperature temperature={temperature} />
-			</h1>
+			<Title>
+				<Trans>Your location</Trans> {data.city.name} {data.city.country}
+			</Title>
+			<LandingPageInputs style={{ flexWrap: 'wrap' }}>
+				{
+					listDays.map((day) => (
+						<WeatherCard
+							key={day.dt}
+							date={day.dt_txt.slice(0, day.dt_txt.indexOf(' '))}
+							humidity={day.main.humidity}
+							temp={day.main.temp.toFixed(1)}
+							wind={day.wind.speed}
+							clouds={day.clouds.all}
+							pressure={day.main.pressure}
+							icon={day.weather[0].icon.replace('n', 'd')}
+						/>
+					))
+				}
+			</LandingPageInputs>
 		</Landing>
 	);
 
