@@ -4,11 +4,11 @@ import { Icon } from 'antd';
 import { Trans } from 'react-i18next';
 import { Landing } from '../Style';
 import Back from '../Reusable/Back';
+import Temperature from '../Reusable/Temperature';
 
 const CurrentLocationForecast = ({ match, history }) => {
 	const [loading, setLoading] = React.useState(true);
 	const [data, setData] = React.useState('');
-	const [unit, setUnit] = React.useState('celsius');
 	const [temperature, setTemperature] = React.useState(0);
 
 	React.useEffect(() => {
@@ -27,17 +27,8 @@ const CurrentLocationForecast = ({ match, history }) => {
 				});
 		};
 		fetchData();
+		// eslint-disable-next-line
 	}, []);
-
-	const changeUnit = (temp) => {
-		if (unit === 'celsius') {
-			setTemperature((temp * 1.8 + 32).toFixed(1));
-			setUnit('fahrenheit');
-		} else {
-			setTemperature(((temp - 32) / 1.8).toFixed(1));
-			setUnit('celsius');
-		}
-	};
 
 	const Loaded = () => (
 		<Landing>
@@ -50,22 +41,7 @@ const CurrentLocationForecast = ({ match, history }) => {
 			</h1>
 			<h1>
 				<Trans>Temperature for your location</Trans>{' '}
-				<span
-					role='button'
-					tabIndex={0}
-					onKeyPress={() => changeUnit(temperature)}
-					onClick={() => changeUnit(temperature)}
-					style={{
-						cursor: 'pointer',
-						textDecoration: 'underline',
-					}}
-				>
-					{temperature}
-					{
-						unit === 'celsius' ? <>&#8451;</>
-							: <>&#8457;</>
-					}
-				</span>
+				<Temperature temperature={temperature} />
 			</h1>
 		</Landing>
 	);

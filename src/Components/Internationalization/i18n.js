@@ -14,7 +14,7 @@ i18n
 					Inputcity: 'Input city name...',
 					'Your location': 'Your location:',
 					'Today will be': 'Today will be:',
-					'Temperature for your location': 'Temperature for your location',
+					'Temperature for your location': 'Temperature for your location:',
 					button: 'Check!',
 					current: 'Current location',
 					'Oops.. could not find this city.': 'Oops.. could not find this city.',
