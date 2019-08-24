@@ -18,7 +18,7 @@ const CurrentLocationForecast = ({ match, history }) => {
 				.then(async (res) => {
 					const response = await res.json();
 					setData(response);
-					setListDays(response.list.filter((i) => i.dt_txt.includes('15:00:00')));
+					setListDays(response.list.filter((i) => i.dt_txt.includes('00:00:00')));
 					setLoading(false);
 				})
 				.catch(() => {

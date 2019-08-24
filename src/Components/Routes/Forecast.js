@@ -20,7 +20,7 @@ const Forecast = ({ history, match }) => {
 					const response = await res.json();
 					if (response.cod !== '404' && !ready) {
 						setData(response);
-						setListDays(response.list.filter((i) => i.dt_txt.includes('15:00:00')));
+						setListDays(response.list.filter((i) => i.dt_txt.includes('00:00:00')));
 						setError(false);
 						setLoading(false);
 						setReady(true);
@@ -55,6 +55,8 @@ const Forecast = ({ history, match }) => {
 								date={day.dt_txt.slice(0, day.dt_txt.indexOf(' '))}
 								humidity={day.main.humidity}
 								temp={day.main.temp.toFixed(1)}
+								tempMin={day.main.temp_min.toFixed(1)}
+								tempMax={day.main.temp_max.toFixed(1)}
 								wind={day.wind.speed}
 								clouds={day.clouds.all}
 								pressure={day.main.pressure}

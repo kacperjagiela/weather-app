@@ -14,10 +14,10 @@ const weekDay = [
 	'Saturday',
 ]
 
-const WeatherCard = ({ date, humidity, temp, wind, clouds, pressure, icon }) => (
+const WeatherCard = ({ date, humidity, temp, tempMax, tempMin, wind, clouds, pressure, icon }) => (
 	<WeatherDay>
 		<p style={{ textAlign: 'center', marginBottom: '5px' }}>
-			({date} 12:00)
+			({date})
 		</p>
 		<p style={{ textAlign: 'center', marginBottom: '5px' }}>
 			<Trans>
@@ -31,9 +31,9 @@ const WeatherCard = ({ date, humidity, temp, wind, clouds, pressure, icon }) => 
 				backgroundColor: '#1890ff', minWidth: '130px',
 			}}
 		/>
-		<p style={{ textAlign: 'center' }}>
-			<Temperature temperature={temp} />
-		</p>
+		<div style={{ textAlign: 'center' }}>
+			<Temperature temperature={temp} tempMax={tempMax} tempMin={tempMin} />
+		</div>
 		<p>
 			<Trans>Pressure</Trans> <span style={{ float: 'right' }}>{pressure}</span>
 		</p>
