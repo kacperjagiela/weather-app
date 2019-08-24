@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import * as React from 'react';
 import { Icon } from 'antd';
+import { Trans } from 'react-i18next';
 import { Landing } from '../Style';
 
 const CurrentLocationForecast = ({ match, history }) => {
@@ -20,23 +21,23 @@ const CurrentLocationForecast = ({ match, history }) => {
 					return null;
 				});
 		};
-
 		fetchData();
 	}, []);
 
 	const Loaded = () => (
 		<Landing>
 			<h1>
-				Your location: {data.name} {data.sys.country}
+				<Trans>Your location</Trans> {data.name} {data.sys.country}
 			</h1>
 			<h1>
-				Today will be: {data.weather[0].main}
+				<Trans>Today will be</Trans> {data.weather[0].main}
 			</h1>
 			<h1>
-				Temperature for your location: {data.main.temp}
+				<Trans>Temperature for your location</Trans> {data.main.temp}
 			</h1>
 		</Landing>
 	);
+
 	return (
 		<Landing>
 			{

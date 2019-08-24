@@ -45,7 +45,7 @@ const LandingPage = ({ history }) => {
 			<LandingPageInputs>
 				<Search
 					placeholder={t('Inputcity')}
-					enterButton={<Button type='primary' loading={loadingSearch}>Get forecast!</Button>}
+					enterButton={<Button type='primary' loading={loadingSearch}>{t('button')}</Button>}
 					size='large'
 					onSearch={(value) => onSearch(value)}
 					style={{ marginRight: '10px' }}
@@ -58,11 +58,11 @@ const LandingPage = ({ history }) => {
 					onClick={() => currentLocation()}
 					loading={loadingButton}
 				>
-					Current location
+					{t('current')}
 				</Button>
 			</LandingPageInputs>
 		</Landing>
 	);
-}
+};
 
 export default LandingPage;
