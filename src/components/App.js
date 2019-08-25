@@ -20,7 +20,7 @@ const App = () => {
 
 	return (
 		<HashRouter basename='/'>
-			<LanguageSelect changeLanguage={changeLanguage} defaultLanguage='en-US' />
+			<LanguageSelect changeLanguage={changeLanguage} defaultLanguage={i18n.language} />
 			<Switch>
 				<Route path='/forecast/:longitude/:latitude' exact component={withRouter(CurrentLocationForecast)} />
 				<Route path='/forecast/:city' exact component={withRouter(Forecast)} />
