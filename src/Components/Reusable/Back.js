@@ -16,8 +16,9 @@ const Back = ({ history }) => {
 			onClick={() => goBack()}
 			style={{
 				position: 'absolute',
-				top: '10px',
-				left: '10px',
+				top: '20px',
+				left: '40px',
+				width: '90px',
 			}}
 		>
 			<Icon type="left" />
