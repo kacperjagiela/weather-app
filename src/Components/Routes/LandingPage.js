@@ -2,18 +2,11 @@ import * as React from 'react';
 import {
 	Typography, Input, Button, message,
 } from 'antd';
-import styled from 'styled-components';
 import { Trans, useTranslation } from 'react-i18next';
-import { Landing, LandingPageInputs } from '../Style';
+import { Landing, LandingPageInputs, ResponsiveButton } from '../Style';
 
 const { Title } = Typography;
 const { Search } = Input;
-
-const ResponsiveButton = styled(Button)`
-	@media screen and (max-width:768px) {
-		margin-top:15px;
-	}
-`;
 
 const LandingPage = ({ history }) => {
 	const [loadingSearch, setLoadingSearch] = React.useState(false);
@@ -49,7 +42,7 @@ const LandingPage = ({ history }) => {
 					Get your forecast!
 				</Trans>
 			</Title>
-			<LandingPageInputs style={{ width: '65%' }}>
+			<LandingPageInputs>
 				<Search
 					placeholder={t('Inputcity')}
 					enterButton={<Button type='primary' loading={loadingSearch}>{t('button')}</Button>}
@@ -61,7 +54,6 @@ const LandingPage = ({ history }) => {
 					icon='compass'
 					type='primary'
 					size='large'
-					style={{ marginLeft: '30px' }}
 					onClick={() => currentLocation()}
 					loading={loadingButton}
 				>

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Trans } from 'react-i18next';
 import { Card } from 'antd';
-import { WeatherDay } from '../Style';
+import { WeatherDay, WeatherIcon } from '../Style';
 import Temperature from './Temperature';
 
 const weekDay = [
@@ -19,19 +19,16 @@ const WeatherCard = ({ date, humidity, temp, tempMax, tempMin, wind, clouds, pre
 	<WeatherDay
 		bodyStyle={{ padding: '5px' }}
 		cover={
-			< img
+			<WeatherIcon
 				src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
 				alt={icon}
-				style={{
-					backgroundColor: 'grey',
-				}}
 			/>
 		}
 	>
 		<p style={{ textAlign: 'center', marginBottom: '5px' }}>
 			({date})
 		</p>
-		<p style={{ textAlign: 'center', marginBottom: '5px' }}>
+		<p style={{ textAlign: 'center', marginBottom: '5px', fontWeight: 'bold' }}>
 			<Trans>
 				{weekDay[new Date(date).getDay()]}
 			</Trans>

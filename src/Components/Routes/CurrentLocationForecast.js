@@ -1,9 +1,11 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import * as React from 'react';
-import { Icon } from 'antd';
+import { Icon, Carousel } from 'antd';
 import { Trans } from 'react-i18next';
 import checkModulo from '../../functions/checkModulo';
-import { Landing, LandingPageInputs, Title } from '../Style';
+import {
+	Landing, LandingPageInputs, Title, Arrow,
+} from '../Style';
 import Back from '../Reusable/Back';
 import WeatherCard from '../Reusable/WeatherCard';
 
@@ -11,6 +13,15 @@ const CurrentLocationForecast = ({ match, history }) => {
 	const [loading, setLoading] = React.useState(true);
 	const [data, setData] = React.useState('');
 	const [listDays, setListDays] = React.useState([]);
+	const carousel = React.useRef(React.createRef());
+
+	const next = () => {
+		carousel.current.next();
+	};
+
+	const prev = () => {
+		carousel.current.prev();
+	};
 
 	React.useEffect(() => {
 		const fetchData = () => {
@@ -38,21 +49,43 @@ const CurrentLocationForecast = ({ match, history }) => {
 			<Title>
 				<Trans>Your location</Trans> {data.city.name} {data.city.country}
 			</Title>
-			<LandingPageInputs style={{ flexWrap: 'wrap' }}>
-				{
-					listDays.map((day) => (
-						<WeatherCard
-							key={day.dt}
-							date={day.dt_txt.slice(0, day.dt_txt.indexOf(' '))}
-							humidity={day.main.humidity}
-							temp={day.main.temp.toFixed(1)}
-							wind={day.wind.speed}
-							clouds={day.clouds.all}
-							pressure={day.main.pressure}
-							icon={day.weather[0].icon.replace('n', 'd')}
-						/>
-					))
-				}
+			<LandingPageInputs style={{ alignItems: 'center' }}>
+				<Arrow
+					type='left-circle'
+					onClick={() => prev()}
+				/>
+				<Carousel
+					// eslint-disable-next-line no-return-assign
+					ref={(node) => (carousel.current = node)}
+					autoplaySpeed={5000}
+					infinite
+					arrows
+					autoplay
+					style={{
+						width: '50vw', paddingBottom: '25px', paddingTop: '25px',
+					}}
+				>
+					{
+						listDays.map((day) => (
+							<WeatherCard
+								key={day.dt}
+								date={day.dt_txt.slice(0, day.dt_txt.indexOf(' '))}
+								humidity={day.main.humidity}
+								temp={day.main.temp.toFixed(1)}
+								tempMin={day.main.temp_min.toFixed(1)}
+								tempMax={day.main.temp_max.toFixed(1)}
+								wind={day.wind.speed}
+								clouds={day.clouds.all}
+								pressure={day.main.pressure}
+								icon={day.weather[0].icon.replace('n', 'd')}
+							/>
+						))
+					}
+				</Carousel>
+				<Arrow
+					type='right-circle'
+					onClick={() => next()}
+				/>
 			</LandingPageInputs>
 		</Landing>
 	);

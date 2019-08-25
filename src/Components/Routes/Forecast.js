@@ -3,7 +3,9 @@ import * as React from 'react';
 import { Icon, Carousel } from 'antd';
 import { Trans } from 'react-i18next';
 import checkModulo from '../../functions/checkModulo';
-import { Landing, Title, LandingPageInputs } from '../Style';
+import {
+	Landing, Title, LandingPageInputs, Arrow,
+} from '../Style';
 import Back from '../Reusable/Back';
 import WeatherCard from '../Reusable/WeatherCard';
 
@@ -59,10 +61,9 @@ const Forecast = ({ history, match }) => {
 					<Trans>Your location</Trans> {data.city.name} {data.city.country}
 				</Title>
 				<LandingPageInputs style={{ alignItems: 'center' }}>
-					<Icon
+					<Arrow
 						type='left-circle'
 						onClick={() => prev()}
-						style={{ fontSize: '3vw' }}
 					/>
 					<Carousel
 						// eslint-disable-next-line no-return-assign
@@ -92,10 +93,9 @@ const Forecast = ({ history, match }) => {
 							))
 						}
 					</Carousel>
-					<Icon
+					<Arrow
 						type='right-circle'
 						onClick={() => next()}
-						style={{ fontSize: '3vw' }}
 					/>
 				</LandingPageInputs>
 			</Landing>

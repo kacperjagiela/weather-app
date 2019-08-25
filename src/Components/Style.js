@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { Card } from 'antd';
+import { Card, Icon, Button } from 'antd';
 
 const fadeIn = keyframes`
 	from {
@@ -8,6 +8,14 @@ const fadeIn = keyframes`
 
 	to {
 		opacity: 1;
+	}
+`;
+
+export const Arrow = styled(Icon)`
+	font-size: 3vw;
+
+	@media screen and (max-width: 768px) {
+		font-size: 5vw;
 	}
 `;
 
@@ -42,6 +50,14 @@ export const LandingPageInputs = styled.div`
 
 	@media screen and (max-width:768px) {
 		flex-wrap:wrap;
+		width: 80%;
+	}
+`;
+
+export const ResponsiveButton = styled(Button)`
+	@media screen and (max-width:768px) {
+		margin: 0 auto;
+		margin-top:30px;
 	}
 `;
 
@@ -52,7 +68,21 @@ export const WeatherDay = styled(Card)`
 	font-size: 1.4vw;
 
 	@media screen and (max-width: 768px) {
+		width: 180px;
+		font-size: 2vw;
+	}
+
+	@media screen and (max-width: 600px) {
 		width: 140px;
 		font-size: 2.5vw;
+	}
+`;
+
+export const WeatherIcon = styled.img`
+	width: 140px;
+	margin: 0 auto;
+	
+	@media screen and (max-width: 768px) {
+		width: 80px;
 	}
 `;
