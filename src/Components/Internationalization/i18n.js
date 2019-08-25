@@ -32,6 +32,7 @@ i18n
 					Thursday: 'Thursday',
 					Friday: 'Friday',
 					Saturday: 'Saturday',
+					tooltip: 'Change degrees to Celsius/Fahrenheit',
 				},
 			},
 			pl: {
@@ -58,6 +59,7 @@ i18n
 					Thursday: 'Czwartek',
 					Friday: 'Piątek',
 					Saturday: 'Sobota',
+					tooltip: 'Zmień stopnie na Celsjusza/Fahrenheita',
 				},
 			},
 		},

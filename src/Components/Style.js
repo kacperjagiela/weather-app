@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { Card } from 'antd';
 
 const fadeIn = keyframes`
 	from {
@@ -44,14 +45,14 @@ export const LandingPageInputs = styled.div`
 	}
 `;
 
-export const WeatherDay = styled.div`
-	margin-left: 20px;
-	margin-right: 20px;
-	margin-bottom: 20px;
-	padding-top: 5px;
-	padding-left:5px;
-	padding-right:5px;
+export const WeatherDay = styled(Card)`
+	width: 240px;
+	margin: 0 auto;
 	text-align: left;
-	min-sidth: 130px;
-	background-color: #fff;
+	font-size: 1.4vw;
+
+	@media screen and (max-width: 768px) {
+		width: 140px;
+		font-size: 2.5vw;
+	}
 `;

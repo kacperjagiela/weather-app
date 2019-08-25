@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { Icon } from 'antd';
 import { Trans } from 'react-i18next';
+import checkModulo from '../../functions/checkModulo';
 import { Landing, LandingPageInputs, Title } from '../Style';
 import Back from '../Reusable/Back';
 import WeatherCard from '../Reusable/WeatherCard';
@@ -17,8 +18,9 @@ const CurrentLocationForecast = ({ match, history }) => {
 			fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${match.params.latitude}&lon=${match.params.longitude}&units=metric&APPID=27b52f2d96109ac0a634c200d7092254`)
 				.then(async (res) => {
 					const response = await res.json();
+					const hours = checkModulo(new Date().getHours(), 3);
 					setData(response);
-					setListDays(response.list.filter((i) => i.dt_txt.includes('00:00:00')));
+					setListDays(response.list.filter((i) => i.dt_txt.includes(`${hours}:00:00`)));
 					setLoading(false);
 				})
 				.catch(() => {
