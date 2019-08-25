@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Typography, Input, Button } from 'antd';
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { Landing, LandingPageInputs } from '../Style';
-import Back from '../Reusable/Back';
+import Back from '../reusable/Back';
 
 const Error = ({ history }) => {
 	const [loading, setLoading] = React.useState(false);
@@ -17,14 +17,10 @@ const Error = ({ history }) => {
 		<Landing>
 			<Back history={history} />
 			<Typography.Title level={3}>
-				<Trans>
-					Oops.. could not find this city.
-				</Trans>
+				{t('Oops.. could not find this city.')}
 			</Typography.Title>
 			<Typography.Title level={3}>
-				<Trans>
-					Try again.
-				</Trans>
+				{t('Try again.')}
 			</Typography.Title>
 			<LandingPageInputs>
 				<Input.Search
@@ -36,9 +32,7 @@ const Error = ({ history }) => {
 				/>
 			</LandingPageInputs>
 			<Typography.Text style={{ marginTop: '15px' }}>
-				<Trans>
-					tip
-				</Trans>
+				{t('tip')}
 			</Typography.Text>
 		</Landing>
 	);

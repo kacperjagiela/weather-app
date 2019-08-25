@@ -1,5 +1,7 @@
 import styled, { keyframes } from 'styled-components';
-import { Card, Icon, Button } from 'antd';
+import {
+	Icon, Button, Carousel,
+} from 'antd';
 
 const fadeIn = keyframes`
 	from {
@@ -16,14 +18,6 @@ export const Arrow = styled(Icon)`
 
 	@media screen and (max-width: 768px) {
 		font-size: 5vw;
-	}
-`;
-
-export const Title = styled.h1`
-	font-size:3vw;
-
-	@media screen and (max-width: 768px){
-		font-size:5vw;
 	}
 `;
 
@@ -61,28 +55,19 @@ export const ResponsiveButton = styled(Button)`
 	}
 `;
 
-export const WeatherDay = styled(Card)`
-	width: 240px;
-	margin: 0 auto;
-	text-align: left;
-	font-size: 1.4vw;
+export const Title = styled.h1`
+	font-size:3vw;
 
-	@media screen and (max-width: 768px) {
-		width: 180px;
-		font-size: 2vw;
+	@media screen and (max-width: 768px){
+		font-size:5vw;
 	}
-
-	@media screen and (max-width: 600px) {
-		width: 140px;
-		font-size: 2.5vw;
+	@media (min-width:1400px){
+		font-size:2vw;
 	}
 `;
 
-export const WeatherIcon = styled.img`
-	width: 140px;
-	margin: 0 auto;
-	
-	@media screen and (max-width: 768px) {
-		width: 80px;
-	}
+export const WeatherCarousel = styled(Carousel)`
+	width: 50vw;
+	padding-bottom: 25px;
+	padding-top: 25px;
 `;

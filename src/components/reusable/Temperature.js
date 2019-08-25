@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Button, Tooltip } from 'antd';
+import { Tooltip } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { TemperatureButton } from './Style';
 
 const Temperature = ({ temperature }) => {
 	const [temp, setTemp] = React.useState(temperature);
@@ -19,21 +20,16 @@ const Temperature = ({ temperature }) => {
 
 	return (
 		<Tooltip title={t('tooltip')}>
-			<Button
+			<TemperatureButton
 				onKeyPress={() => changeUnit(temp)}
 				onClick={() => changeUnit(temp)}
-				style={{
-					cursor: 'pointer',
-					marginTop: '5px',
-					marginBottom: '5px',
-				}}
 			>
 				{temp}
 				{
 					unit === 'celsius' ? <>&#8451;</>
 						: <>&#8457;</>
 				}
-			</Button>
+			</TemperatureButton>
 		</Tooltip>
 	);
 };

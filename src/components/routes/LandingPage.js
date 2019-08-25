@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
 	Typography, Input, Button, message,
 } from 'antd';
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { Landing, LandingPageInputs, ResponsiveButton } from '../Style';
 
 const { Title } = Typography;
@@ -38,9 +38,7 @@ const LandingPage = ({ history }) => {
 	return (
 		<Landing>
 			<Title level={1}>
-				<Trans>
-					Get your forecast!
-				</Trans>
+				{t('Get your forecast!')}
 			</Title>
 			<LandingPageInputs>
 				<Search

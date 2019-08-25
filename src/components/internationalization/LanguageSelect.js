@@ -1,19 +1,17 @@
 import * as React from 'react';
 import { Select } from 'antd';
+import LangSelect from './Style';
 
 const { Option } = Select;
 
 const LanguageSelect = ({ changeLanguage, defaultLanguage }) => (
-	<Select
+	<LangSelect
 		defaultValue={defaultLanguage}
 		onChange={(value) => changeLanguage(value)}
-		style={{
-			position: 'absolute', top: '20px', right: '40px', width: '90px',
-		}}
 	>
 		<Option value='en-US'>en-US</Option>
 		<Option value='pl-PL'>pl-PL</Option>
-	</Select>
+	</LangSelect>
 );
 
 export default LanguageSelect;

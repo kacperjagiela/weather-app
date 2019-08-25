@@ -3,11 +3,11 @@ import {
 	HashRouter, Switch, Route, withRouter,
 } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import LandingPage from './Routes/LandingPage';
-import Forecast from './Routes/Forecast';
-import CurrentLocationForecast from './Routes/CurrentLocationForecast';
-import Error from './Routes/Error';
-import LanguageSelect from './Internationalization/LanguageSelect';
+import LandingPage from './routes/LandingPage';
+import Forecast from './routes/Forecast';
+import CurrentLocationForecast from './routes/CurrentLocationForecast';
+import Error from './routes/Error';
+import LanguageSelect from './internationalization/LanguageSelect';
 
 //  API 27b52f2d96109ac0a634c200d7092254
 
