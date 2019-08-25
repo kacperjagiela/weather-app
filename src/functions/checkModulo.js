@@ -1,8 +1,10 @@
 const checkModulo = (number, modulo) => {
-	if (number % modulo === 0) {
-		return number;
+	let num = number;
+	if (num === 24) num = 0;
+	if (num % modulo === 0) {
+		return num;
 	}
-	return checkModulo(number + 1, modulo);
+	return checkModulo(num + 1, modulo);
 };
 
 export default checkModulo;

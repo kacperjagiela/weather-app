@@ -11,8 +11,8 @@ const LanguageSelect = ({ changeLanguage, defaultLanguage }) => (
 			position: 'absolute', top: '20px', right: '40px', width: '90px',
 		}}
 	>
-		<Option value='en'>English</Option>
-		<Option value='pl'>Polish</Option>
+		<Option value='en-US'>en-US</Option>
+		<Option value='pl-PL'>pl-PL</Option>
 	</Select>
 );
 

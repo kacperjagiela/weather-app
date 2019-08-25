@@ -1,3 +1,4 @@
+/* eslint-disable */
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
@@ -8,7 +9,7 @@ i18n
 	.init({
 		// we init with resources
 		resources: {
-			en: {
+			'en-US': {
 				translations: {
 					'Get your forecast!': 'Get your weather forecast!',
 					Inputcity: 'Input city name...',
@@ -35,7 +36,7 @@ i18n
 					tooltip: 'Change the temperature scale',
 				},
 			},
-			pl: {
+			'pl-PL': {
 				translations: {
 					'Get your forecast!': 'Sprawdź prognozę pogody!',
 					Inputcity: 'Wprowadź nazwę miasta...',
